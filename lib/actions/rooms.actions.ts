@@ -1,4 +1,4 @@
-'user server';
+'use server';
 
 import { nanoid} from 'nanoid'
 import { liveblocks } from '../liveblocks';
@@ -30,7 +30,7 @@ CreateDocumentParams) => {
           return parseStringify(room);
 
     } catch (error) {
-        console.log('Error happened while creating a room: ${error}');
+        console.log(`Error happened while creating a room: ${error}`);
     } 
 }
 
