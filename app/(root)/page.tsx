@@ -1,4 +1,5 @@
 import AddDocumentBtn from '@/components/AddDocumentBtn';
+import { DeleteModal } from '@/components/DeleteModal';
 import Header from '@/components/Header'
 import { Button } from '@/components/ui/button'
 import { getDocuments } from '@/lib/actions/rooms.actions';
@@ -52,11 +53,10 @@ const Home = async () => {
                       <p className="line-clamp-1 text-lg">{metadata.title}</p> 
                       <p className="text-sm font-light text-blue-100">Created about {dateConverter(createdAt)}</p>                  
                     </div>
-                 </Link>          
+                 </Link>   
+                 <DeleteModal roomId={id} />      
                </li>
-
             ))}
-
           </ul> 
         </div>
       ): (
