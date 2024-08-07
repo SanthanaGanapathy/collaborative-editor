@@ -8,7 +8,7 @@ import  { useEffect, useRef, useState } from 'react'
 import ActiveCollaborators from './ActiveCollaborators';
 import { Input } from './ui/input';
 import Image from 'next/image';
-import { updateDocument } from '@/lib/actions/rooms.actions';
+import { updateDocument } from '@/lib/actions/room.actions';
 import Loader from './Loader';
 import ShareModal from './ShareModal';
 
@@ -76,7 +76,7 @@ const CollaborativeRoom = ({ roomId, roomMetadata, users, currentUserType}: Coll
               type = "text"
               value = {documentTitle}
               ref  ={inputRef}
-              placeholdedr="Enter title"
+              placeholder="Enter title"
               onChange ={(e) => setDocumentTitle(e.target.value)}
               onKeyDown={updateTitleHandler}
               disable={!editing}
@@ -102,11 +102,10 @@ const CollaborativeRoom = ({ roomId, roomMetadata, users, currentUserType}: Coll
           {currentUserType  !== 'editor' && !editing && (
               <p className="view-only-tag">View only </p>
           )}
-          {loading && <p className="test-sm text-gray-400">saving</p>}
+          {loading && <p className="text-sm text-gray-400">saving...</p>}
           
         </div>
-        <div className="flex w-full flex-1 justify-end gap-2
-        sm:gap-3">
+        <div className="flex w-full flex-1 justify-end gap-2 sm:gap-3">
             <ActiveCollaborators />
 
              <ShareModal

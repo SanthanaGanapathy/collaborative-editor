@@ -18,7 +18,7 @@ import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import UserTypeSelector from "./UserTypeSelector";
 import Collaborator from "./Collaborator";
-import { updateDocumentAccess } from "@/lib/actions/rooms.actions";
+import { updateDocumentAccess } from "@/lib/actions/room.actions";
 
 const ShareModal = ({ roomId, collaborators, creatorId, currentUserType}: ShareDocumentDialogProps) => {
     const user = useSelf();
@@ -26,7 +26,7 @@ const ShareModal = ({ roomId, collaborators, creatorId, currentUserType}: ShareD
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
 
-    const [email, setEmail] = useState('')
+    const [email, setEmail] = useState('');
     const [userType, setUserType] = useState<UserType>('viewer');
 
     const shareDocumentHandler = async () => {
@@ -45,8 +45,7 @@ const ShareModal = ({ roomId, collaborators, creatorId, currentUserType}: ShareD
   return (
     <Dialog open ={open} onOpenChange={setOpen}>
       <DialogTrigger>
-        <Button className="gradient-blue flex h-9 gap-1 px-4" disabled={currentUserType !== 'editor'}
-        >
+        <Button className="gradient-blue flex h-9 gap-1 px-4" disabled={currentUserType !== 'editor'}>
           <Image 
              src="/assets/icons/share.svg"
              alt="share"
@@ -82,8 +81,7 @@ const ShareModal = ({ roomId, collaborators, creatorId, currentUserType}: ShareD
                  setUserType={setUserType}
               />
             </div>
-            <Button type="submit" onClick={shareDocumentHandler} 
-            className="gradient-blue flex h-full gap-1 px-5" disabled={loading}>
+            <Button type="submit" onClick={shareDocumentHandler} className="gradient-blue flex h-full gap-1 px-5" disabled={loading}>
               {loading ? 'Sending...' : 'Invite'}
             </Button>
            </div>

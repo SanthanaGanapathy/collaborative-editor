@@ -2,7 +2,7 @@ import Image from 'next/image';
 import React, { useState } from 'react'
 import UserTypeSelector from './UserTypeSelector';
 import { Button } from './ui/button';
-import { removeCollaborator, updateDocument, updateDocumentAccess } from '@/lib/actions/rooms.actions';
+import { removeCollaborator, updateDocumentAccess } from '@/lib/actions/room.actions';
 
 const Collaborator = ( {roomId, creatorId, collaborator, email, user }: CollaboratorProps) => {
     const [userType, setUserType] = useState(collaborator.userType || 'viewer');
@@ -59,8 +59,7 @@ const Collaborator = ( {roomId, creatorId, collaborator, email, user }: Collabor
                  setUserType={setUserType || 'viewer'}
                  onClickHandler={shareDocumentHandler}
                />
-               <Button type="button" onClick={() =>
-                removeCollaboratorHandler(collaborator.email)}>
+               <Button type="button" onClick={() => removeCollaboratorHandler(collaborator.email)}>
                   Remove
                </Button>
             </div>

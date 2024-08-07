@@ -3,7 +3,7 @@ import { DeleteModal } from '@/components/DeleteModal';
 import Header from '@/components/Header'
 import Notifications from '@/components/Notifications';
 import { Button } from '@/components/ui/button'
-import { getDocuments } from '@/lib/actions/rooms.actions';
+import { getDocuments } from '@/lib/actions/room.actions';
 import { dateConverter } from '@/lib/utils';
 import { SignedIn, UserButton } from '@clerk/nextjs'
 import { currentUser } from '@clerk/nextjs/server';
@@ -32,7 +32,7 @@ const Home = async () => {
       {roomDocuments.data.length > 0 ?(
         <div className="document-list-container">
           <div className = "document-list-title">
-            <h3 className="test-28-semibold">All documents</h3>
+            <h3 className="text-28-semibold">All documents</h3>
             <AddDocumentBtn 
               userId={clerkUser.id}
               email={clerkUser.emailAddresses[0].emailAddress}

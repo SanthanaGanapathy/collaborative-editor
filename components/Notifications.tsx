@@ -27,8 +27,7 @@ const Notifications = () => {
            height={24}
         />
         {count > 0 && (
-            <div className="absolute right-2 top-2 z-2 size-20
-            rounded-full bg-blue-500" />
+            <div className="absolute right-2 top-2 z-20 size-2 rounded-full bg-blue-500" />
         )}
       </PopoverTrigger>
       <PopoverContent align="end" className="shad-popover">
@@ -44,8 +43,7 @@ const Notifications = () => {
                 <p className="py-2 text-center text-dark-500">No new Notifications</p>           
             )}
 
-            {unreadNotifications.length >0 && unreadNotifications.map
-            ((notification) => (
+            {unreadNotifications.length >0 && unreadNotifications.map((notification) => (
                 <InboxNotification 
                 key={notification.id}
                 inboxNotification={notification}
