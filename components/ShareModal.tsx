@@ -18,8 +18,9 @@ import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import UserTypeSelector from "./UserTypeSelector";
 import Collaborator from "./Collaborator";
+import { updateDocumentAccess } from "@/lib/actions/rooms.actions";
 
-const SahreModal = ({ roomId, collaborators, creatorId, currentUserType}: ShareDocumentDialogProps) => {
+const ShareModal = ({ roomId, collaborators, creatorId, currentUserType}: ShareDocumentDialogProps) => {
     const user = useSelf();
 
     const [open, setOpen] = useState(false);
@@ -29,6 +30,16 @@ const SahreModal = ({ roomId, collaborators, creatorId, currentUserType}: ShareD
     const [userType, setUserType] = useState<UserType>('viewer');
 
     const shareDocumentHandler = async () => {
+      setLoading(true);
+        
+        await updateDocumentAccess({ 
+            roomId, 
+            email, 
+            userType: userType as UserType, 
+            updatedBy: user.info,
+        });
+        
+        setLoading(false);
 
     }
   return (
@@ -72,7 +83,7 @@ const SahreModal = ({ roomId, collaborators, creatorId, currentUserType}: ShareD
               />
             </div>
             <Button type="submit" onClick={shareDocumentHandler} 
-            className="gradient-blue flex h-full gap-1 px-5"disabled={loading}>
+            className="gradient-blue flex h-full gap-1 px-5" disabled={loading}>
               {loading ? 'Sending...' : 'Invite'}
             </Button>
            </div>
@@ -97,4 +108,4 @@ const SahreModal = ({ roomId, collaborators, creatorId, currentUserType}: ShareD
   )
 }
 
-export default SahreModal
+export default ShareModal
