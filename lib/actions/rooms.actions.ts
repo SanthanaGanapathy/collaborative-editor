@@ -88,7 +88,19 @@ export const updateDocumentAccess = async ({roomId, email, userType, updatedBy}:
        })
 
        if(room) {
-
+        const notificationId = nanoid();
+        await liveblocks.triggerInboxNotification({
+            userId: email,
+            kind: '$documentAccess',
+            subjectId: notificationId,
+            activityData: {
+                userType,
+                title: `You have been granted ${userType} access to the Document by ${updatedBy.name}`,
+                updatedBy: updatedBy.name,
+                avatar: updatedBy.avatar,
+                email: updatedBy.email
+            }
+        })
        }
 
        revalidatePath(`/documents/${roomId}`);
